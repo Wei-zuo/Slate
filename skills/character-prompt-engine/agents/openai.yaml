@@ -1,0 +1,4 @@
+interface:
+  display_name: "人设提示词"
+  short_description: "把角色设定整理成可直接出图的人设与定妆照提示词"
+  default_prompt: "Use $character-prompt-engine 把这个角色设定整理成一条可直接出图的人设或定妆照提示词，只输出提示词本身。"
