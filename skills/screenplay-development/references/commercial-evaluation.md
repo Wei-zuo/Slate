@@ -1,62 +1,98 @@
-# Commercial Evaluation
+# 商业化与工业化评估
 
-Use this file when the user asks for commercial value, industrialization, market fit, or packaging logic.
+当用户说“更商业”“更适合平台”“更容易传播”“更适合量产”“更适合微短剧 / 1 分钟视频”时，读这个文件。
 
-## Core Questions
+## 1. 先判断这是不是一个能卖的故事
 
-Pressure-test the material with these questions:
+先问：
 
-- Can it be pitched clearly in one breath?
-- Is there an immediate audience fantasy, fear, or ache?
-- Is there a poster image?
-- Is there a trailer moment?
-- Is the title easy to remember and easy to sell?
-- Does the concept feel expensive in a good way or just expensive?
-- If this is a series, what repeats without feeling repetitive?
+- 一句话能不能讲明白
+- 听完能不能立刻想象海报
+- 有没有清晰的情绪承诺：怕、爽、疼、甜、奇、燃
+- 主角欲望够不够直接
+- 冲突能不能快速成立
+- 成本和效果比值划不划算
+- 如果要做系列，它靠什么继续长
 
-## What Usually Sells Better
+## 2. 更容易成立的商业特征
 
-- a familiar container with a fresh twist
-- a clear emotional contract
-- a protagonist with a sharp, legible desire
-- a conflict engine that scales
-- a cost structure producers can imagine mounting
-- a world that can be marketed in one or two memorable images
+通常更容易卖的，是这些东西：
 
-## Common Failure Modes
+- 熟悉容器里的新钩子
+- 明确的关系撕扯
+- 一听就懂的主角欲望
+- 可以持续制造冲突的故事引擎
+- 一两个就能卖出去的关键画面
+- 预算可控但效果明显
 
-- the idea is atmosphere without plot
-- the theme is clear but the character is passive
-- the twist is clever but not inevitable
-- the world is rich but the engine is weak
-- the stakes are loud but generic
-- the draft explains itself instead of dramatizing itself
+## 3. 常见失败方式
 
-## Repair Moves
+- 有气氛，没有剧情
+- 有主题，没有人物行动
+- 有设定，没有引擎
+- 有反转，没有过程
+- 情绪很大，但代价不具体
+- 看起来像故事，其实只是梗概解释
 
-When the material lacks commercial shape, try one or more of these moves:
+## 4. 常用修复动作
 
-- compress the timeline
-- externalize the hidden desire
-- give the protagonist a deadline
-- make the antagonist active earlier
-- replace generic danger with a specific cost
-- turn subtext into a decision point
-- merge redundant characters
-- locate the single image the project should be sold on
+商业化不足时，优先尝试：
 
-## Industrialization Packet
+- 压缩时间线
+- 让欲望更外显
+- 加上明确 deadline
+- 让对抗方更早主动出手
+- 把泛泛危险改成具体代价
+- 把潜台词改成必须做出的选择
+- 合并冗余人物
+- 找出最该被卖的那张画面
 
-When the user says "industrialize" or wants something more marketable, useful deliverables are:
+## 5. 工业化输出包
 
-- sharpened title options
-- one-line pitch
-- target audience
-- format recommendation
-- budget lane
-- comparable works
-- core character hook
-- repeatable story engine
-- pilot or short-film beat path
+当用户要“工业化制作”时，优先补这些：
 
-Commercial does not mean shallow. It means the desire line, conflict, and packaging are legible fast.
+- 标题方向
+- 一句话卖点
+- 受众
+- 适合的 format
+- 时长建议
+- 预算带
+- 关键关系钩子
+- 可重复的系列引擎
+- 哪种版本最适合短片、微短剧、长片、剧集
+
+## 6. 一分钟短视频改编
+
+如果用户要把已成立的故事改成 `1 分钟短视频` 或 `AI 视频脚本`，优先做这些转换：
+
+- 把 premise 压成一个强钩子
+- 找出最能立刻成立的关系或悬念
+- 把剧作推进拆成 `8-10` 段
+- 每段都必须推进，不允许空转
+- 结尾必须有挂点或认知回弹
+
+这一步默认输出纯文本方案，不默认输出 JSON。
+
+可以包含：
+
+- 标题方向
+- 固定视觉基底
+- 节奏拆解
+- 每段 copy
+- 每段 visual 重点
+
+## 7. 商业化不等于写俗
+
+商业化在这个 skill 里的意思是：
+
+- 讲得清
+- 卖点准
+- 欲望明
+- 代价真
+- 能拍出来
+
+不是：
+
+- 自动变成俗套
+- 自动压平作者表达
+- 自动迎合最低级刺激
