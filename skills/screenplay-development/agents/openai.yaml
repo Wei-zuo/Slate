@@ -1,4 +1,4 @@
 interface:
   display_name: "编剧室"
-  short_description: "把灵感、梗概或草稿打磨成可拍可卖的剧本"
-  default_prompt: "Use $screenplay-development 把这个灵感、设定或初稿打磨成一个更可拍、更可卖的剧本。"
+  short_description: "先出一句话故事，再继续开发成可拍可卖的剧本"
+  default_prompt: "Use $screenplay-development 先给我 3 条一句话故事，我选中或改写之后再继续开发成剧本。"
