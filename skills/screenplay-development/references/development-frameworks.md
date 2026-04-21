@@ -1,95 +1,119 @@
-# Development Frameworks
+# 开发框架
 
-Use this file selectively when shaping a story beyond the first idea pass.
-Before using the frameworks below, lock a usable one-sentence story first; see [logline-and-save-the-cat.md](logline-and-save-the-cat.md).
+当一句话故事已经初步成立，准备往人物、结构、分场和剧本继续长时，读这个文件。
 
-## 1. Spark to Premise
+在使用下面的框架前，先确认已经锁定了当前项目的一句话故事；见 [logline-and-save-the-cat.md](logline-and-save-the-cat.md)。
 
-When the user gives only a fragment, answer five questions before scaling up:
+## 1. 从一句话故事到 premise
 
-- Who is the story really about?
-- What do they want badly enough to move?
-- What contradiction makes the setup feel fresh?
-- What event breaks the old equilibrium?
-- What cost makes the story impossible to ignore?
+先把一句话故事拆开，回答五个问题：
 
-If the fragment is too loose, generate three routes:
+- 这到底是谁的故事
+- 他 / 她最想要什么
+- 这个设定里最反常的部分是什么
+- 什么事件迫使他 / 她不能再维持旧生活
+- 这件事为什么必须现在发生
 
-- `emotional route`: strongest feeling, most intimate stakes
-- `commercial route`: cleanest hook, widest immediate audience
-- `odd route`: strangest but still coherent version
+如果一句话故事回答不了这五个问题，就还没到分场阶段。
 
-Each route should include protagonist, goal, obstacle, hook, and ending logic.
+## 2. 故事引擎检查
 
-## 2. Story Engine Checklist
+一个可继续开发的 premise，至少要过这几关：
 
-Use this list to test whether the concept can sustain a script:
+- `hook`：一句话能不能讲明白
+- `engine`：十分钟后还有没有新冲突
+- `choice`：人物是不是在做选择，而不是被动被剧情推着走
+- `escalation`：代价至少能上升三次
+- `reversal`：中段或后段有没有翻面
+- `ending`：最后有没有一个能留下来的动作或画面
 
-- `hook`: can the premise be pitched in one breath?
-- `engine`: what keeps producing new conflict after page ten?
-- `choice`: what decisions, not accidents, drive the plot?
-- `escalation`: how does the cost rise at least three times?
-- `reversal`: what changes the audience's reading of the situation?
-- `ending`: what final choice or image resolves the central contradiction?
+缺哪一项，就优先修哪一项，不要急着堆设定。
 
-If one item is missing, fix the engine before adding scenes.
+## 3. 人物压力测试
 
-## 3. Character Pressure Test
+对每个主要人物，回答：
 
-For each major character, define:
+- `表层身份`：别人眼里的他 / 她是谁
+- `表层目标`：他 / 她眼下想得到什么
+- `内在匮乏`：真正缺的是什么
+- `伤口`：过去哪件事塑造了现在
+- `杠杆`：他 / 她对别人有什么控制力或依赖关系
+- `矛盾点`：这个人哪里最不自洽，因此最像活人
+- `变化线`：最后会变成怎样
 
-- `mask`: how they present themselves
-- `wound`: what earlier damage shapes them
-- `hunger`: what they pursue on the surface
-- `lack`: what they actually need
-- `leverage`: what power they have over others
-- `contradiction`: what makes them non-generic
-- `turn`: what changes in them by the end
+如果两个主要角色想要同样的东西、用同样的方法、说同样的话，他们还没有分开。
 
-If two characters want the same thing in the same way, separate them.
+## 4. 关系线检查
 
-## 4. Scene Pressure Test
+真正能长成剧本的故事，往往不是靠设定，而是靠关系。
 
-Every scene should contain:
+优先确认：
 
-- objective
-- obstacle
-- tactic
-- turn
-- residue
+- 谁在拉扯主角
+- 谁最能暴露主角的弱点
+- 谁代表主角可能成为的另一种命运
+- 哪条关系承担主题
 
-A scene should change at least one of these:
+如果没有一条真正会撕开的关系，故事很容易只剩 premise。
 
-- information
-- power
-- intimacy
-- risk
-- plan
+## 5. 场景压力测试
 
-If none of them change, cut or merge the scene.
+每场戏至少要有：
 
-## 5. Format Notes
+- 目标
+- 阻碍
+- 策略
+- 转折
+- 残留后果
 
-### Short film
+一场戏至少改变以下之一：
 
-- Build around one decisive change, not a life summary.
-- Enter late and leave early.
-- Favor `4-8` scenes unless the user asks otherwise.
-- The ending should feel both surprising and inevitable.
+- 信息
+- 权力
+- 亲密度
+- 风险
+- 计划
 
-### Feature
+如果一场戏什么都没改，它大概率不该存在。
 
-- Make sure the premise can survive multiple reversals.
-- Secondary characters must create pressure, not decorative texture.
-- Midpoint and final act turn should reframe the goal or cost.
+## 6. 格式化建议
 
-### Series episode
+### 短片
 
-- Solve the episode problem while exposing the larger engine.
-- End with a turn that opens future story, not a generic cliffhanger.
+- 围绕一次决定、一次揭示或一次反噬
+- 不写人物一生，只写那一刀
+- 默认 `4-8` 场
+- 结尾最好既意外又不可避免
 
-### Microdrama or short-form serial
+### 长片
 
-- Each unit needs a bait, reveal, switch, and hook-out.
-- Compress exposition into conflict.
-- Favor hard turns over slow atmospherics.
+- 确保 premise 能撑住多次反转
+- 次要角色必须制造压力，不是做气氛布景
+- 中点和终局都要重新定义代价
+
+### 剧集 / 单集
+
+- 单集问题要解决
+- 更大的系列引擎要露头
+- 结尾要打开未来，不只是机械 cliffhanger
+
+### 微短剧 / 高频短内容
+
+- 每一单元都要有钩子、推进、翻面、挂点
+- 解释必须压缩进冲突里
+- 更依赖硬转折，不依赖慢热氛围
+
+## 7. 从开发到剧本的默认顺序
+
+推荐顺序：
+
+1. 一句话故事
+2. 开发包
+3. 结构脊柱
+4. 人物关系和人物弧线
+5. 分场列表
+6. treatment
+7. 剧本页 / 完整剧本
+
+如果用户只想先看一句话故事，停在第 1 步。
+如果用户已经确认一句话故事并说“继续”，默认从第 2 步开始。
