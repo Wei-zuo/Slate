@@ -1,8 +1,4 @@
-# ToonPrompt
-
-Version: `0.2.0`
-
-Open-source Codex skills for screenplay development, character prompt design, and producer-led video agent orchestration.
+# Producer.md
 
 ## 中文简介
 
