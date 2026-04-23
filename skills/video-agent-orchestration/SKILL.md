@@ -85,6 +85,8 @@ Rules:
 - Use `$character-prompt-engine` when character prompts, consistency passes, prompt-only outputs, or model-specific prompt adaptation are needed.
 - Lock visual anchors for main characters, costume architecture, palette, bridge or set structure, and signature props.
 - Art package must be reusable by storyboard and production.
+- If the brief or story package promises `contrast`, `comedy`, `one-beat recognition`, or a specific visual gag, art design may not sand that down in the name of being `premium`.
+- For transformation hooks, explicitly decide whether the reveal is `literal`, `semi-literal`, or `metaphorical`. Do not leave this ambiguous.
 
 Required output:
 
@@ -99,6 +101,8 @@ Rules:
 - Do not split storyboard before the story and art packages are readable enough to execute.
 - Produce `storyboard.md` and `ad_feedback.md`.
 - Call out missing structure, unclear action, visual continuity risks, and which shots should be tested first.
+- AD must compare the brief promise against the art execution. If the project sells itself on `反差 / 好笑 / 一眼识别`, and art weakens that into a subtle metaphor, AD should mark it as a blocker and send it back.
+- `Premium` is not a valid reason to erase the core joke, hook, or recognition threshold.
 
 Required outputs:
 
@@ -155,6 +159,8 @@ When useful, also include:
 - Do not let storyboard invent missing worldbuilding just to keep moving.
 - Do not treat a model failure as a story failure without diagnosis.
 - If the user provides art test images, include them in the example or packet context instead of leaving them detached from the workflow.
+- Do not let `高级感` become an excuse for weakening the promised hook.
+- If a brief depends on a visual joke or reveal, downstream stages must preserve its readability, not just its mood.
 
 ## Practical Defaults
 
