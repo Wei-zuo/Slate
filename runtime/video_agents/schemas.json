@@ -1,0 +1,3249 @@
+{
+  "generated_by": "runtime.video_agents.export_schemas",
+  "schemas": {
+    "Asset": {
+      "additionalProperties": false,
+      "description": "Single asset tracked in the shared library.",
+      "properties": {
+        "asset_id": {
+          "title": "Asset Id",
+          "type": "string"
+        },
+        "asset_type": {
+          "enum": [
+            "character",
+            "location",
+            "prop",
+            "style_pack",
+            "camera_pack"
+          ],
+          "title": "Asset Type",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "aliases": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Aliases",
+          "type": "array"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "visual_hooks": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Visual Hooks",
+          "type": "array"
+        },
+        "reference_image_paths": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reference Image Paths",
+          "type": "array"
+        },
+        "status": {
+          "enum": [
+            "stub",
+            "generated",
+            "approved",
+            "rejected"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "created_by_phase": {
+          "title": "Created By Phase",
+          "type": "string"
+        },
+        "created_by_agent": {
+          "title": "Created By Agent",
+          "type": "string"
+        },
+        "notes": {
+          "default": "",
+          "title": "Notes",
+          "type": "string"
+        }
+      },
+      "required": [
+        "asset_id",
+        "asset_type",
+        "name",
+        "aliases",
+        "description",
+        "visual_hooks",
+        "reference_image_paths",
+        "status",
+        "created_by_phase",
+        "created_by_agent"
+      ],
+      "title": "Asset",
+      "type": "object"
+    },
+    "ProjectBrief": {
+      "$defs": {
+        "InputRoute": {
+          "description": "Entry routes handled by the producer.",
+          "enum": [
+            "new_brief",
+            "existing_script",
+            "adaptation",
+            "production_rescue"
+          ],
+          "title": "InputRoute",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Producer-frozen project brief.",
+      "properties": {
+        "project_id": {
+          "title": "Project Id",
+          "type": "string"
+        },
+        "route": {
+          "$ref": "#/$defs/InputRoute"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "goal": {
+          "title": "Goal",
+          "type": "string"
+        },
+        "platform": {
+          "default": "OpenClaw",
+          "title": "Platform",
+          "type": "string"
+        },
+        "format": {
+          "title": "Format",
+          "type": "string"
+        },
+        "target_duration_seconds": {
+          "minimum": 1,
+          "title": "Target Duration Seconds",
+          "type": "integer"
+        },
+        "language": {
+          "title": "Language",
+          "type": "string"
+        },
+        "aspect_ratio": {
+          "default": "16:9",
+          "title": "Aspect Ratio",
+          "type": "string"
+        },
+        "target_audience": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Target Audience",
+          "type": "array"
+        },
+        "source_materials": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Source Materials",
+          "type": "array"
+        },
+        "required_elements": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Required Elements",
+          "type": "array"
+        },
+        "forbidden_drift": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Forbidden Drift",
+          "type": "array"
+        },
+        "delivery_scope": {
+          "title": "Delivery Scope",
+          "type": "string"
+        }
+      },
+      "required": [
+        "project_id",
+        "route",
+        "title",
+        "goal",
+        "format",
+        "target_duration_seconds",
+        "language",
+        "delivery_scope"
+      ],
+      "title": "ProjectBrief",
+      "type": "object"
+    },
+    "CharacterCard": {
+      "additionalProperties": false,
+      "description": "Character summary passed from screenwriter to producer/art design.",
+      "properties": {
+        "character_id": {
+          "title": "Character Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "dramatic_function": {
+          "title": "Dramatic Function",
+          "type": "string"
+        },
+        "visual_hooks": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Visual Hooks",
+          "type": "array"
+        },
+        "asset_hint": {
+          "title": "Asset Hint",
+          "type": "string"
+        }
+      },
+      "required": [
+        "character_id",
+        "name",
+        "dramatic_function",
+        "asset_hint"
+      ],
+      "title": "CharacterCard",
+      "type": "object"
+    },
+    "SceneSpec": {
+      "additionalProperties": false,
+      "description": "Scene-level grouping for beats and shots.",
+      "properties": {
+        "scene_id": {
+          "title": "Scene Id",
+          "type": "string"
+        },
+        "order": {
+          "minimum": 1,
+          "title": "Order",
+          "type": "integer"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "location": {
+          "title": "Location",
+          "type": "string"
+        },
+        "time_of_day": {
+          "title": "Time Of Day",
+          "type": "string"
+        },
+        "summary": {
+          "title": "Summary",
+          "type": "string"
+        },
+        "involved_characters": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Involved Characters",
+          "type": "array"
+        },
+        "target_shot_count": {
+          "minimum": 1,
+          "title": "Target Shot Count",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "scene_id",
+        "order",
+        "title",
+        "location",
+        "time_of_day",
+        "summary",
+        "target_shot_count"
+      ],
+      "title": "SceneSpec",
+      "type": "object"
+    },
+    "StoryBeat": {
+      "additionalProperties": false,
+      "description": "Narrative beat used for storyboarding and beat-aware segmentation.",
+      "properties": {
+        "beat_id": {
+          "title": "Beat Id",
+          "type": "string"
+        },
+        "scene_id": {
+          "title": "Scene Id",
+          "type": "string"
+        },
+        "order": {
+          "minimum": 1,
+          "title": "Order",
+          "type": "integer"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "purpose": {
+          "title": "Purpose",
+          "type": "string"
+        },
+        "summary": {
+          "title": "Summary",
+          "type": "string"
+        },
+        "duration_seconds": {
+          "exclusiveMinimum": 0,
+          "title": "Duration Seconds",
+          "type": "number"
+        }
+      },
+      "required": [
+        "beat_id",
+        "scene_id",
+        "order",
+        "label",
+        "purpose",
+        "summary",
+        "duration_seconds"
+      ],
+      "title": "StoryBeat",
+      "type": "object"
+    },
+    "StoryPackage": {
+      "$defs": {
+        "CharacterCard": {
+          "additionalProperties": false,
+          "description": "Character summary passed from screenwriter to producer/art design.",
+          "properties": {
+            "character_id": {
+              "title": "Character Id",
+              "type": "string"
+            },
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "dramatic_function": {
+              "title": "Dramatic Function",
+              "type": "string"
+            },
+            "visual_hooks": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Visual Hooks",
+              "type": "array"
+            },
+            "asset_hint": {
+              "title": "Asset Hint",
+              "type": "string"
+            }
+          },
+          "required": [
+            "character_id",
+            "name",
+            "dramatic_function",
+            "asset_hint"
+          ],
+          "title": "CharacterCard",
+          "type": "object"
+        },
+        "SceneSpec": {
+          "additionalProperties": false,
+          "description": "Scene-level grouping for beats and shots.",
+          "properties": {
+            "scene_id": {
+              "title": "Scene Id",
+              "type": "string"
+            },
+            "order": {
+              "minimum": 1,
+              "title": "Order",
+              "type": "integer"
+            },
+            "title": {
+              "title": "Title",
+              "type": "string"
+            },
+            "location": {
+              "title": "Location",
+              "type": "string"
+            },
+            "time_of_day": {
+              "title": "Time Of Day",
+              "type": "string"
+            },
+            "summary": {
+              "title": "Summary",
+              "type": "string"
+            },
+            "involved_characters": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Involved Characters",
+              "type": "array"
+            },
+            "target_shot_count": {
+              "minimum": 1,
+              "title": "Target Shot Count",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "scene_id",
+            "order",
+            "title",
+            "location",
+            "time_of_day",
+            "summary",
+            "target_shot_count"
+          ],
+          "title": "SceneSpec",
+          "type": "object"
+        },
+        "StoryBeat": {
+          "additionalProperties": false,
+          "description": "Narrative beat used for storyboarding and beat-aware segmentation.",
+          "properties": {
+            "beat_id": {
+              "title": "Beat Id",
+              "type": "string"
+            },
+            "scene_id": {
+              "title": "Scene Id",
+              "type": "string"
+            },
+            "order": {
+              "minimum": 1,
+              "title": "Order",
+              "type": "integer"
+            },
+            "label": {
+              "title": "Label",
+              "type": "string"
+            },
+            "purpose": {
+              "title": "Purpose",
+              "type": "string"
+            },
+            "summary": {
+              "title": "Summary",
+              "type": "string"
+            },
+            "duration_seconds": {
+              "exclusiveMinimum": 0,
+              "title": "Duration Seconds",
+              "type": "number"
+            }
+          },
+          "required": [
+            "beat_id",
+            "scene_id",
+            "order",
+            "label",
+            "purpose",
+            "summary",
+            "duration_seconds"
+          ],
+          "title": "StoryBeat",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Structured screenwriter output.",
+      "properties": {
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "logline": {
+          "title": "Logline",
+          "type": "string"
+        },
+        "synopsis": {
+          "title": "Synopsis",
+          "type": "string"
+        },
+        "adaptation_goal": {
+          "title": "Adaptation Goal",
+          "type": "string"
+        },
+        "format": {
+          "title": "Format",
+          "type": "string"
+        },
+        "emotional_rhythm": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Emotional Rhythm",
+          "type": "array"
+        },
+        "characters": {
+          "items": {
+            "$ref": "#/$defs/CharacterCard"
+          },
+          "title": "Characters",
+          "type": "array"
+        },
+        "scenes": {
+          "items": {
+            "$ref": "#/$defs/SceneSpec"
+          },
+          "title": "Scenes",
+          "type": "array"
+        },
+        "beats": {
+          "items": {
+            "$ref": "#/$defs/StoryBeat"
+          },
+          "title": "Beats",
+          "type": "array"
+        },
+        "estimated_total_shots": {
+          "minimum": 1,
+          "title": "Estimated Total Shots",
+          "type": "integer"
+        },
+        "narration_style": {
+          "title": "Narration Style",
+          "type": "string"
+        },
+        "dialogue_constraints": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Dialogue Constraints",
+          "type": "array"
+        },
+        "visual_motifs": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Visual Motifs",
+          "type": "array"
+        },
+        "notes": {
+          "default": "",
+          "title": "Notes",
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "logline",
+        "synopsis",
+        "adaptation_goal",
+        "format",
+        "estimated_total_shots",
+        "narration_style"
+      ],
+      "title": "StoryPackage",
+      "type": "object"
+    },
+    "CameraSpec": {
+      "additionalProperties": false,
+      "description": "Camera instruction normalized for prompt compilation.",
+      "properties": {
+        "movement": {
+          "title": "Movement",
+          "type": "string"
+        },
+        "shot_size": {
+          "title": "Shot Size",
+          "type": "string"
+        },
+        "position": {
+          "title": "Position",
+          "type": "string"
+        },
+        "speed": {
+          "anyOf": [
+            {
+              "enum": [
+                "slow",
+                "medium",
+                "fast"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Speed"
+        }
+      },
+      "required": [
+        "movement",
+        "shot_size",
+        "position"
+      ],
+      "title": "CameraSpec",
+      "type": "object"
+    },
+    "FrameRef": {
+      "additionalProperties": false,
+      "description": "Reference slot for a shot boundary frame.",
+      "properties": {
+        "source": {
+          "enum": [
+            "asset",
+            "to_generate"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "asset_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Asset Id"
+        },
+        "generation_hint": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Generation Hint"
+        },
+        "image_path": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Image Path"
+        }
+      },
+      "required": [
+        "source"
+      ],
+      "title": "FrameRef",
+      "type": "object"
+    },
+    "Shot": {
+      "$defs": {
+        "CameraSpec": {
+          "additionalProperties": false,
+          "description": "Camera instruction normalized for prompt compilation.",
+          "properties": {
+            "movement": {
+              "title": "Movement",
+              "type": "string"
+            },
+            "shot_size": {
+              "title": "Shot Size",
+              "type": "string"
+            },
+            "position": {
+              "title": "Position",
+              "type": "string"
+            },
+            "speed": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "slow",
+                    "medium",
+                    "fast"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Speed"
+            }
+          },
+          "required": [
+            "movement",
+            "shot_size",
+            "position"
+          ],
+          "title": "CameraSpec",
+          "type": "object"
+        },
+        "FrameRef": {
+          "additionalProperties": false,
+          "description": "Reference slot for a shot boundary frame.",
+          "properties": {
+            "source": {
+              "enum": [
+                "asset",
+                "to_generate"
+              ],
+              "title": "Source",
+              "type": "string"
+            },
+            "asset_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Asset Id"
+            },
+            "generation_hint": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Generation Hint"
+            },
+            "image_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Image Path"
+            }
+          },
+          "required": [
+            "source"
+          ],
+          "title": "FrameRef",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Executable shot spec produced by the assistant director.",
+      "properties": {
+        "shot_id": {
+          "title": "Shot Id",
+          "type": "string"
+        },
+        "beat_id": {
+          "title": "Beat Id",
+          "type": "string"
+        },
+        "duration_seconds": {
+          "title": "Duration Seconds",
+          "type": "number"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "involved_asset_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Involved Asset Ids",
+          "type": "array"
+        },
+        "camera": {
+          "$ref": "#/$defs/CameraSpec"
+        },
+        "first_frame_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FrameRef"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "last_frame_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FrameRef"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "style_pack_id": {
+          "title": "Style Pack Id",
+          "type": "string"
+        },
+        "risk_level": {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "title": "Risk Level",
+          "type": "string"
+        },
+        "notes": {
+          "title": "Notes",
+          "type": "string"
+        }
+      },
+      "required": [
+        "shot_id",
+        "beat_id",
+        "duration_seconds",
+        "description",
+        "involved_asset_ids",
+        "camera",
+        "style_pack_id",
+        "risk_level",
+        "notes"
+      ],
+      "title": "Shot",
+      "type": "object"
+    },
+    "StoryboardPackage": {
+      "$defs": {
+        "CameraSpec": {
+          "additionalProperties": false,
+          "description": "Camera instruction normalized for prompt compilation.",
+          "properties": {
+            "movement": {
+              "title": "Movement",
+              "type": "string"
+            },
+            "shot_size": {
+              "title": "Shot Size",
+              "type": "string"
+            },
+            "position": {
+              "title": "Position",
+              "type": "string"
+            },
+            "speed": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "slow",
+                    "medium",
+                    "fast"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Speed"
+            }
+          },
+          "required": [
+            "movement",
+            "shot_size",
+            "position"
+          ],
+          "title": "CameraSpec",
+          "type": "object"
+        },
+        "FrameRef": {
+          "additionalProperties": false,
+          "description": "Reference slot for a shot boundary frame.",
+          "properties": {
+            "source": {
+              "enum": [
+                "asset",
+                "to_generate"
+              ],
+              "title": "Source",
+              "type": "string"
+            },
+            "asset_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Asset Id"
+            },
+            "generation_hint": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Generation Hint"
+            },
+            "image_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Image Path"
+            }
+          },
+          "required": [
+            "source"
+          ],
+          "title": "FrameRef",
+          "type": "object"
+        },
+        "Shot": {
+          "additionalProperties": false,
+          "description": "Executable shot spec produced by the assistant director.",
+          "properties": {
+            "shot_id": {
+              "title": "Shot Id",
+              "type": "string"
+            },
+            "beat_id": {
+              "title": "Beat Id",
+              "type": "string"
+            },
+            "duration_seconds": {
+              "title": "Duration Seconds",
+              "type": "number"
+            },
+            "description": {
+              "title": "Description",
+              "type": "string"
+            },
+            "involved_asset_ids": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Involved Asset Ids",
+              "type": "array"
+            },
+            "camera": {
+              "$ref": "#/$defs/CameraSpec"
+            },
+            "first_frame_ref": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/FrameRef"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "last_frame_ref": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/FrameRef"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "style_pack_id": {
+              "title": "Style Pack Id",
+              "type": "string"
+            },
+            "risk_level": {
+              "enum": [
+                "low",
+                "medium",
+                "high"
+              ],
+              "title": "Risk Level",
+              "type": "string"
+            },
+            "notes": {
+              "title": "Notes",
+              "type": "string"
+            }
+          },
+          "required": [
+            "shot_id",
+            "beat_id",
+            "duration_seconds",
+            "description",
+            "involved_asset_ids",
+            "camera",
+            "style_pack_id",
+            "risk_level",
+            "notes"
+          ],
+          "title": "Shot",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Structured AD output with executable shots and test priorities.",
+      "properties": {
+        "total_duration_seconds": {
+          "exclusiveMinimum": 0,
+          "title": "Total Duration Seconds",
+          "type": "number"
+        },
+        "shots": {
+          "items": {
+            "$ref": "#/$defs/Shot"
+          },
+          "title": "Shots",
+          "type": "array"
+        },
+        "continuity_notes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Continuity Notes",
+          "type": "array"
+        },
+        "first_test_shot_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "First Test Shot Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "total_duration_seconds"
+      ],
+      "title": "StoryboardPackage",
+      "type": "object"
+    },
+    "ImageJob": {
+      "additionalProperties": false,
+      "description": "Queue item consumed by the image-production agent.",
+      "properties": {
+        "job_id": {
+          "title": "Job Id",
+          "type": "string"
+        },
+        "job_kind": {
+          "enum": [
+            "asset_image",
+            "first_frame",
+            "last_frame"
+          ],
+          "title": "Job Kind",
+          "type": "string"
+        },
+        "target_asset_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Target Asset Id"
+        },
+        "target_shot_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Target Shot Id"
+        },
+        "prompt": {
+          "title": "Prompt",
+          "type": "string"
+        },
+        "negative_prompt": {
+          "title": "Negative Prompt",
+          "type": "string"
+        },
+        "reference_image_paths": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reference Image Paths",
+          "type": "array"
+        },
+        "aspect_ratio": {
+          "title": "Aspect Ratio",
+          "type": "string"
+        },
+        "style_pack_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Style Pack Id"
+        },
+        "status": {
+          "default": "pending",
+          "enum": [
+            "pending",
+            "in_progress",
+            "done",
+            "failed"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "output_image_path": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Output Image Path"
+        },
+        "retry_count": {
+          "default": 0,
+          "title": "Retry Count",
+          "type": "integer"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error"
+        }
+      },
+      "required": [
+        "job_id",
+        "job_kind",
+        "prompt",
+        "negative_prompt",
+        "aspect_ratio"
+      ],
+      "title": "ImageJob",
+      "type": "object"
+    },
+    "ArtGenerationPlan": {
+      "$defs": {
+        "ImageJob": {
+          "additionalProperties": false,
+          "description": "Queue item consumed by the image-production agent.",
+          "properties": {
+            "job_id": {
+              "title": "Job Id",
+              "type": "string"
+            },
+            "job_kind": {
+              "enum": [
+                "asset_image",
+                "first_frame",
+                "last_frame"
+              ],
+              "title": "Job Kind",
+              "type": "string"
+            },
+            "target_asset_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Target Asset Id"
+            },
+            "target_shot_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Target Shot Id"
+            },
+            "prompt": {
+              "title": "Prompt",
+              "type": "string"
+            },
+            "negative_prompt": {
+              "title": "Negative Prompt",
+              "type": "string"
+            },
+            "reference_image_paths": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Reference Image Paths",
+              "type": "array"
+            },
+            "aspect_ratio": {
+              "title": "Aspect Ratio",
+              "type": "string"
+            },
+            "style_pack_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Style Pack Id"
+            },
+            "status": {
+              "default": "pending",
+              "enum": [
+                "pending",
+                "in_progress",
+                "done",
+                "failed"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "output_image_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Output Image Path"
+            },
+            "retry_count": {
+              "default": 0,
+              "title": "Retry Count",
+              "type": "integer"
+            },
+            "error": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Error"
+            }
+          },
+          "required": [
+            "job_id",
+            "job_kind",
+            "prompt",
+            "negative_prompt",
+            "aspect_ratio"
+          ],
+          "title": "ImageJob",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Art-design output handed to the image-production queue.",
+      "properties": {
+        "style_pack_id": {
+          "title": "Style Pack Id",
+          "type": "string"
+        },
+        "asset_jobs": {
+          "items": {
+            "$ref": "#/$defs/ImageJob"
+          },
+          "title": "Asset Jobs",
+          "type": "array"
+        },
+        "notes": {
+          "default": "",
+          "title": "Notes",
+          "type": "string"
+        }
+      },
+      "required": [
+        "style_pack_id",
+        "asset_jobs"
+      ],
+      "title": "ArtGenerationPlan",
+      "type": "object"
+    },
+    "ImageRefSlot": {
+      "additionalProperties": false,
+      "description": "Bound image reference passed to a target render model.",
+      "properties": {
+        "role": {
+          "title": "Role",
+          "type": "string"
+        },
+        "asset_id": {
+          "title": "Asset Id",
+          "type": "string"
+        },
+        "image_path": {
+          "title": "Image Path",
+          "type": "string"
+        },
+        "slot_hint": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Slot Hint"
+        }
+      },
+      "required": [
+        "role",
+        "asset_id",
+        "image_path"
+      ],
+      "title": "ImageRefSlot",
+      "type": "object"
+    },
+    "ShotRenderRequest": {
+      "$defs": {
+        "CameraSpec": {
+          "additionalProperties": false,
+          "description": "Camera instruction normalized for prompt compilation.",
+          "properties": {
+            "movement": {
+              "title": "Movement",
+              "type": "string"
+            },
+            "shot_size": {
+              "title": "Shot Size",
+              "type": "string"
+            },
+            "position": {
+              "title": "Position",
+              "type": "string"
+            },
+            "speed": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "slow",
+                    "medium",
+                    "fast"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Speed"
+            }
+          },
+          "required": [
+            "movement",
+            "shot_size",
+            "position"
+          ],
+          "title": "CameraSpec",
+          "type": "object"
+        },
+        "ImageRefSlot": {
+          "additionalProperties": false,
+          "description": "Bound image reference passed to a target render model.",
+          "properties": {
+            "role": {
+              "title": "Role",
+              "type": "string"
+            },
+            "asset_id": {
+              "title": "Asset Id",
+              "type": "string"
+            },
+            "image_path": {
+              "title": "Image Path",
+              "type": "string"
+            },
+            "slot_hint": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Slot Hint"
+            }
+          },
+          "required": [
+            "role",
+            "asset_id",
+            "image_path"
+          ],
+          "title": "ImageRefSlot",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Final per-shot request compiled for a downstream video model.",
+      "properties": {
+        "shot_id": {
+          "title": "Shot Id",
+          "type": "string"
+        },
+        "target_model": {
+          "title": "Target Model",
+          "type": "string"
+        },
+        "positive_text": {
+          "title": "Positive Text",
+          "type": "string"
+        },
+        "negative_text": {
+          "title": "Negative Text",
+          "type": "string"
+        },
+        "ref_images": {
+          "items": {
+            "$ref": "#/$defs/ImageRefSlot"
+          },
+          "title": "Ref Images",
+          "type": "array"
+        },
+        "first_frame_ref_path": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "First Frame Ref Path"
+        },
+        "last_frame_ref_path": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Last Frame Ref Path"
+        },
+        "camera": {
+          "$ref": "#/$defs/CameraSpec"
+        },
+        "duration_seconds": {
+          "title": "Duration Seconds",
+          "type": "number"
+        },
+        "aspect_ratio": {
+          "title": "Aspect Ratio",
+          "type": "string"
+        },
+        "style_pack_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Style Pack Id"
+        }
+      },
+      "required": [
+        "shot_id",
+        "target_model",
+        "positive_text",
+        "negative_text",
+        "ref_images",
+        "camera",
+        "duration_seconds",
+        "aspect_ratio"
+      ],
+      "title": "ShotRenderRequest",
+      "type": "object"
+    },
+    "VideoJob": {
+      "$defs": {
+        "CameraSpec": {
+          "additionalProperties": false,
+          "description": "Camera instruction normalized for prompt compilation.",
+          "properties": {
+            "movement": {
+              "title": "Movement",
+              "type": "string"
+            },
+            "shot_size": {
+              "title": "Shot Size",
+              "type": "string"
+            },
+            "position": {
+              "title": "Position",
+              "type": "string"
+            },
+            "speed": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "slow",
+                    "medium",
+                    "fast"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Speed"
+            }
+          },
+          "required": [
+            "movement",
+            "shot_size",
+            "position"
+          ],
+          "title": "CameraSpec",
+          "type": "object"
+        },
+        "ImageRefSlot": {
+          "additionalProperties": false,
+          "description": "Bound image reference passed to a target render model.",
+          "properties": {
+            "role": {
+              "title": "Role",
+              "type": "string"
+            },
+            "asset_id": {
+              "title": "Asset Id",
+              "type": "string"
+            },
+            "image_path": {
+              "title": "Image Path",
+              "type": "string"
+            },
+            "slot_hint": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Slot Hint"
+            }
+          },
+          "required": [
+            "role",
+            "asset_id",
+            "image_path"
+          ],
+          "title": "ImageRefSlot",
+          "type": "object"
+        },
+        "ShotRenderRequest": {
+          "additionalProperties": false,
+          "description": "Final per-shot request compiled for a downstream video model.",
+          "properties": {
+            "shot_id": {
+              "title": "Shot Id",
+              "type": "string"
+            },
+            "target_model": {
+              "title": "Target Model",
+              "type": "string"
+            },
+            "positive_text": {
+              "title": "Positive Text",
+              "type": "string"
+            },
+            "negative_text": {
+              "title": "Negative Text",
+              "type": "string"
+            },
+            "ref_images": {
+              "items": {
+                "$ref": "#/$defs/ImageRefSlot"
+              },
+              "title": "Ref Images",
+              "type": "array"
+            },
+            "first_frame_ref_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "First Frame Ref Path"
+            },
+            "last_frame_ref_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Last Frame Ref Path"
+            },
+            "camera": {
+              "$ref": "#/$defs/CameraSpec"
+            },
+            "duration_seconds": {
+              "title": "Duration Seconds",
+              "type": "number"
+            },
+            "aspect_ratio": {
+              "title": "Aspect Ratio",
+              "type": "string"
+            },
+            "style_pack_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Style Pack Id"
+            }
+          },
+          "required": [
+            "shot_id",
+            "target_model",
+            "positive_text",
+            "negative_text",
+            "ref_images",
+            "camera",
+            "duration_seconds",
+            "aspect_ratio"
+          ],
+          "title": "ShotRenderRequest",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Queue item consumed by the video-production agent.",
+      "properties": {
+        "job_id": {
+          "title": "Job Id",
+          "type": "string"
+        },
+        "shot_id": {
+          "title": "Shot Id",
+          "type": "string"
+        },
+        "render_request": {
+          "$ref": "#/$defs/ShotRenderRequest"
+        },
+        "status": {
+          "default": "pending",
+          "enum": [
+            "pending",
+            "in_progress",
+            "done",
+            "failed"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "output_video_path": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Output Video Path"
+        },
+        "retry_count": {
+          "default": 0,
+          "title": "Retry Count",
+          "type": "integer"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error"
+        }
+      },
+      "required": [
+        "job_id",
+        "shot_id",
+        "render_request"
+      ],
+      "title": "VideoJob",
+      "type": "object"
+    },
+    "ModelProfile": {
+      "additionalProperties": false,
+      "description": "Capability descriptor injected by OpenClaw for the target model.",
+      "properties": {
+        "model_id": {
+          "title": "Model Id",
+          "type": "string"
+        },
+        "max_seconds": {
+          "title": "Max Seconds",
+          "type": "number"
+        },
+        "max_ref_images": {
+          "title": "Max Ref Images",
+          "type": "integer"
+        },
+        "role_binding_supported": {
+          "title": "Role Binding Supported",
+          "type": "boolean"
+        },
+        "required_negative_fragments": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Required Negative Fragments",
+          "type": "array"
+        },
+        "camera_verb_map": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Camera Verb Map",
+          "type": "object"
+        },
+        "preferred_language": {
+          "default": "either",
+          "enum": [
+            "zh",
+            "en",
+            "either"
+          ],
+          "title": "Preferred Language",
+          "type": "string"
+        },
+        "aspect_ratios_supported": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Aspect Ratios Supported",
+          "type": "array"
+        }
+      },
+      "required": [
+        "model_id",
+        "max_seconds",
+        "max_ref_images",
+        "role_binding_supported"
+      ],
+      "title": "ModelProfile",
+      "type": "object"
+    },
+    "Segment": {
+      "additionalProperties": false,
+      "description": "Beat-aware segment grouping used for batching/packing.",
+      "properties": {
+        "segment_id": {
+          "title": "Segment Id",
+          "type": "string"
+        },
+        "beat_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Beat Ids",
+          "type": "array"
+        },
+        "shot_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Shot Ids",
+          "type": "array"
+        },
+        "duration_seconds": {
+          "title": "Duration Seconds",
+          "type": "number"
+        }
+      },
+      "required": [
+        "segment_id",
+        "beat_ids",
+        "shot_ids",
+        "duration_seconds"
+      ],
+      "title": "Segment",
+      "type": "object"
+    },
+    "RevisionRequest": {
+      "$defs": {
+        "RevisionTarget": {
+          "description": "Phase target for revision routing.",
+          "enum": [
+            "screenwriter",
+            "art_design",
+            "assistant_director_cut"
+          ],
+          "title": "RevisionTarget",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Structured feedback item used by the revision router.",
+      "properties": {
+        "target": {
+          "$ref": "#/$defs/RevisionTarget"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        },
+        "blocking_issues": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Blocking Issues",
+          "type": "array"
+        },
+        "requested_changes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Requested Changes",
+          "type": "array"
+        },
+        "retry_budget": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Retry Budget",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "target",
+        "reason"
+      ],
+      "title": "RevisionRequest",
+      "type": "object"
+    },
+    "AdFeedback": {
+      "$defs": {
+        "ReviewDecision": {
+          "description": "Assistant-director review outcomes.",
+          "enum": [
+            "approved",
+            "revise_story",
+            "revise_art",
+            "revise_storyboard",
+            "blocked"
+          ],
+          "title": "ReviewDecision",
+          "type": "string"
+        },
+        "RevisionRequest": {
+          "additionalProperties": false,
+          "description": "Structured feedback item used by the revision router.",
+          "properties": {
+            "target": {
+              "$ref": "#/$defs/RevisionTarget"
+            },
+            "reason": {
+              "title": "Reason",
+              "type": "string"
+            },
+            "blocking_issues": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Blocking Issues",
+              "type": "array"
+            },
+            "requested_changes": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Requested Changes",
+              "type": "array"
+            },
+            "retry_budget": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Retry Budget",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "target",
+            "reason"
+          ],
+          "title": "RevisionRequest",
+          "type": "object"
+        },
+        "RevisionTarget": {
+          "description": "Phase target for revision routing.",
+          "enum": [
+            "screenwriter",
+            "art_design",
+            "assistant_director_cut"
+          ],
+          "title": "RevisionTarget",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "description": "AD review summary and rework decision.",
+      "properties": {
+        "decision": {
+          "$ref": "#/$defs/ReviewDecision"
+        },
+        "summary": {
+          "title": "Summary",
+          "type": "string"
+        },
+        "blocking_issues": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Blocking Issues",
+          "type": "array"
+        },
+        "high_risk_shot_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "High Risk Shot Ids",
+          "type": "array"
+        },
+        "first_test_shot_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "First Test Shot Ids",
+          "type": "array"
+        },
+        "revision_request": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RevisionRequest"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "decision",
+        "summary"
+      ],
+      "title": "AdFeedback",
+      "type": "object"
+    },
+    "FeedbackItem": {
+      "additionalProperties": false,
+      "description": "Parsed, machine-readable feedback change request.",
+      "properties": {
+        "target_asset_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Target Asset Id"
+        },
+        "target_shot_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Target Shot Id"
+        },
+        "change_type": {
+          "enum": [
+            "regenerate",
+            "hook_edit",
+            "ref_swap",
+            "palette_shift",
+            "description_edit"
+          ],
+          "title": "Change Type",
+          "type": "string"
+        },
+        "params": {
+          "additionalProperties": true,
+          "title": "Params",
+          "type": "object"
+        },
+        "original_comment": {
+          "title": "Original Comment",
+          "type": "string"
+        }
+      },
+      "required": [
+        "change_type",
+        "original_comment"
+      ],
+      "title": "FeedbackItem",
+      "type": "object"
+    },
+    "ProductionTodoItem": {
+      "$defs": {
+        "PriorityLevel": {
+          "description": "Priority bands used in the production packet.",
+          "enum": [
+            "P0",
+            "P1",
+            "P2"
+          ],
+          "title": "PriorityLevel",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Concrete producer task after integration.",
+      "properties": {
+        "item_id": {
+          "title": "Item Id",
+          "type": "string"
+        },
+        "priority": {
+          "$ref": "#/$defs/PriorityLevel"
+        },
+        "owner_role": {
+          "title": "Owner Role",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "depends_on": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Depends On",
+          "type": "array"
+        },
+        "success_criteria": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Success Criteria",
+          "type": "array"
+        }
+      },
+      "required": [
+        "item_id",
+        "priority",
+        "owner_role",
+        "description"
+      ],
+      "title": "ProductionTodoItem",
+      "type": "object"
+    },
+    "ProductionPacket": {
+      "$defs": {
+        "AdFeedback": {
+          "additionalProperties": false,
+          "description": "AD review summary and rework decision.",
+          "properties": {
+            "decision": {
+              "$ref": "#/$defs/ReviewDecision"
+            },
+            "summary": {
+              "title": "Summary",
+              "type": "string"
+            },
+            "blocking_issues": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Blocking Issues",
+              "type": "array"
+            },
+            "high_risk_shot_ids": {
+              "items": {
+                "type": "string"
+              },
+              "title": "High Risk Shot Ids",
+              "type": "array"
+            },
+            "first_test_shot_ids": {
+              "items": {
+                "type": "string"
+              },
+              "title": "First Test Shot Ids",
+              "type": "array"
+            },
+            "revision_request": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/RevisionRequest"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            }
+          },
+          "required": [
+            "decision",
+            "summary"
+          ],
+          "title": "AdFeedback",
+          "type": "object"
+        },
+        "ArtGenerationPlan": {
+          "additionalProperties": false,
+          "description": "Art-design output handed to the image-production queue.",
+          "properties": {
+            "style_pack_id": {
+              "title": "Style Pack Id",
+              "type": "string"
+            },
+            "asset_jobs": {
+              "items": {
+                "$ref": "#/$defs/ImageJob"
+              },
+              "title": "Asset Jobs",
+              "type": "array"
+            },
+            "notes": {
+              "default": "",
+              "title": "Notes",
+              "type": "string"
+            }
+          },
+          "required": [
+            "style_pack_id",
+            "asset_jobs"
+          ],
+          "title": "ArtGenerationPlan",
+          "type": "object"
+        },
+        "CameraSpec": {
+          "additionalProperties": false,
+          "description": "Camera instruction normalized for prompt compilation.",
+          "properties": {
+            "movement": {
+              "title": "Movement",
+              "type": "string"
+            },
+            "shot_size": {
+              "title": "Shot Size",
+              "type": "string"
+            },
+            "position": {
+              "title": "Position",
+              "type": "string"
+            },
+            "speed": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "slow",
+                    "medium",
+                    "fast"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Speed"
+            }
+          },
+          "required": [
+            "movement",
+            "shot_size",
+            "position"
+          ],
+          "title": "CameraSpec",
+          "type": "object"
+        },
+        "CharacterCard": {
+          "additionalProperties": false,
+          "description": "Character summary passed from screenwriter to producer/art design.",
+          "properties": {
+            "character_id": {
+              "title": "Character Id",
+              "type": "string"
+            },
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "dramatic_function": {
+              "title": "Dramatic Function",
+              "type": "string"
+            },
+            "visual_hooks": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Visual Hooks",
+              "type": "array"
+            },
+            "asset_hint": {
+              "title": "Asset Hint",
+              "type": "string"
+            }
+          },
+          "required": [
+            "character_id",
+            "name",
+            "dramatic_function",
+            "asset_hint"
+          ],
+          "title": "CharacterCard",
+          "type": "object"
+        },
+        "FrameRef": {
+          "additionalProperties": false,
+          "description": "Reference slot for a shot boundary frame.",
+          "properties": {
+            "source": {
+              "enum": [
+                "asset",
+                "to_generate"
+              ],
+              "title": "Source",
+              "type": "string"
+            },
+            "asset_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Asset Id"
+            },
+            "generation_hint": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Generation Hint"
+            },
+            "image_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Image Path"
+            }
+          },
+          "required": [
+            "source"
+          ],
+          "title": "FrameRef",
+          "type": "object"
+        },
+        "ImageJob": {
+          "additionalProperties": false,
+          "description": "Queue item consumed by the image-production agent.",
+          "properties": {
+            "job_id": {
+              "title": "Job Id",
+              "type": "string"
+            },
+            "job_kind": {
+              "enum": [
+                "asset_image",
+                "first_frame",
+                "last_frame"
+              ],
+              "title": "Job Kind",
+              "type": "string"
+            },
+            "target_asset_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Target Asset Id"
+            },
+            "target_shot_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Target Shot Id"
+            },
+            "prompt": {
+              "title": "Prompt",
+              "type": "string"
+            },
+            "negative_prompt": {
+              "title": "Negative Prompt",
+              "type": "string"
+            },
+            "reference_image_paths": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Reference Image Paths",
+              "type": "array"
+            },
+            "aspect_ratio": {
+              "title": "Aspect Ratio",
+              "type": "string"
+            },
+            "style_pack_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Style Pack Id"
+            },
+            "status": {
+              "default": "pending",
+              "enum": [
+                "pending",
+                "in_progress",
+                "done",
+                "failed"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "output_image_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Output Image Path"
+            },
+            "retry_count": {
+              "default": 0,
+              "title": "Retry Count",
+              "type": "integer"
+            },
+            "error": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Error"
+            }
+          },
+          "required": [
+            "job_id",
+            "job_kind",
+            "prompt",
+            "negative_prompt",
+            "aspect_ratio"
+          ],
+          "title": "ImageJob",
+          "type": "object"
+        },
+        "ImageRefSlot": {
+          "additionalProperties": false,
+          "description": "Bound image reference passed to a target render model.",
+          "properties": {
+            "role": {
+              "title": "Role",
+              "type": "string"
+            },
+            "asset_id": {
+              "title": "Asset Id",
+              "type": "string"
+            },
+            "image_path": {
+              "title": "Image Path",
+              "type": "string"
+            },
+            "slot_hint": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Slot Hint"
+            }
+          },
+          "required": [
+            "role",
+            "asset_id",
+            "image_path"
+          ],
+          "title": "ImageRefSlot",
+          "type": "object"
+        },
+        "InputRoute": {
+          "description": "Entry routes handled by the producer.",
+          "enum": [
+            "new_brief",
+            "existing_script",
+            "adaptation",
+            "production_rescue"
+          ],
+          "title": "InputRoute",
+          "type": "string"
+        },
+        "PriorityLevel": {
+          "description": "Priority bands used in the production packet.",
+          "enum": [
+            "P0",
+            "P1",
+            "P2"
+          ],
+          "title": "PriorityLevel",
+          "type": "string"
+        },
+        "ProductionTodoItem": {
+          "additionalProperties": false,
+          "description": "Concrete producer task after integration.",
+          "properties": {
+            "item_id": {
+              "title": "Item Id",
+              "type": "string"
+            },
+            "priority": {
+              "$ref": "#/$defs/PriorityLevel"
+            },
+            "owner_role": {
+              "title": "Owner Role",
+              "type": "string"
+            },
+            "description": {
+              "title": "Description",
+              "type": "string"
+            },
+            "depends_on": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Depends On",
+              "type": "array"
+            },
+            "success_criteria": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Success Criteria",
+              "type": "array"
+            }
+          },
+          "required": [
+            "item_id",
+            "priority",
+            "owner_role",
+            "description"
+          ],
+          "title": "ProductionTodoItem",
+          "type": "object"
+        },
+        "ProjectBrief": {
+          "additionalProperties": false,
+          "description": "Producer-frozen project brief.",
+          "properties": {
+            "project_id": {
+              "title": "Project Id",
+              "type": "string"
+            },
+            "route": {
+              "$ref": "#/$defs/InputRoute"
+            },
+            "title": {
+              "title": "Title",
+              "type": "string"
+            },
+            "goal": {
+              "title": "Goal",
+              "type": "string"
+            },
+            "platform": {
+              "default": "OpenClaw",
+              "title": "Platform",
+              "type": "string"
+            },
+            "format": {
+              "title": "Format",
+              "type": "string"
+            },
+            "target_duration_seconds": {
+              "minimum": 1,
+              "title": "Target Duration Seconds",
+              "type": "integer"
+            },
+            "language": {
+              "title": "Language",
+              "type": "string"
+            },
+            "aspect_ratio": {
+              "default": "16:9",
+              "title": "Aspect Ratio",
+              "type": "string"
+            },
+            "target_audience": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Target Audience",
+              "type": "array"
+            },
+            "source_materials": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Source Materials",
+              "type": "array"
+            },
+            "required_elements": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Required Elements",
+              "type": "array"
+            },
+            "forbidden_drift": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Forbidden Drift",
+              "type": "array"
+            },
+            "delivery_scope": {
+              "title": "Delivery Scope",
+              "type": "string"
+            }
+          },
+          "required": [
+            "project_id",
+            "route",
+            "title",
+            "goal",
+            "format",
+            "target_duration_seconds",
+            "language",
+            "delivery_scope"
+          ],
+          "title": "ProjectBrief",
+          "type": "object"
+        },
+        "ReviewDecision": {
+          "description": "Assistant-director review outcomes.",
+          "enum": [
+            "approved",
+            "revise_story",
+            "revise_art",
+            "revise_storyboard",
+            "blocked"
+          ],
+          "title": "ReviewDecision",
+          "type": "string"
+        },
+        "RevisionRequest": {
+          "additionalProperties": false,
+          "description": "Structured feedback item used by the revision router.",
+          "properties": {
+            "target": {
+              "$ref": "#/$defs/RevisionTarget"
+            },
+            "reason": {
+              "title": "Reason",
+              "type": "string"
+            },
+            "blocking_issues": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Blocking Issues",
+              "type": "array"
+            },
+            "requested_changes": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Requested Changes",
+              "type": "array"
+            },
+            "retry_budget": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Retry Budget",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "target",
+            "reason"
+          ],
+          "title": "RevisionRequest",
+          "type": "object"
+        },
+        "RevisionTarget": {
+          "description": "Phase target for revision routing.",
+          "enum": [
+            "screenwriter",
+            "art_design",
+            "assistant_director_cut"
+          ],
+          "title": "RevisionTarget",
+          "type": "string"
+        },
+        "SceneSpec": {
+          "additionalProperties": false,
+          "description": "Scene-level grouping for beats and shots.",
+          "properties": {
+            "scene_id": {
+              "title": "Scene Id",
+              "type": "string"
+            },
+            "order": {
+              "minimum": 1,
+              "title": "Order",
+              "type": "integer"
+            },
+            "title": {
+              "title": "Title",
+              "type": "string"
+            },
+            "location": {
+              "title": "Location",
+              "type": "string"
+            },
+            "time_of_day": {
+              "title": "Time Of Day",
+              "type": "string"
+            },
+            "summary": {
+              "title": "Summary",
+              "type": "string"
+            },
+            "involved_characters": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Involved Characters",
+              "type": "array"
+            },
+            "target_shot_count": {
+              "minimum": 1,
+              "title": "Target Shot Count",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "scene_id",
+            "order",
+            "title",
+            "location",
+            "time_of_day",
+            "summary",
+            "target_shot_count"
+          ],
+          "title": "SceneSpec",
+          "type": "object"
+        },
+        "Segment": {
+          "additionalProperties": false,
+          "description": "Beat-aware segment grouping used for batching/packing.",
+          "properties": {
+            "segment_id": {
+              "title": "Segment Id",
+              "type": "string"
+            },
+            "beat_ids": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Beat Ids",
+              "type": "array"
+            },
+            "shot_ids": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Shot Ids",
+              "type": "array"
+            },
+            "duration_seconds": {
+              "title": "Duration Seconds",
+              "type": "number"
+            }
+          },
+          "required": [
+            "segment_id",
+            "beat_ids",
+            "shot_ids",
+            "duration_seconds"
+          ],
+          "title": "Segment",
+          "type": "object"
+        },
+        "Shot": {
+          "additionalProperties": false,
+          "description": "Executable shot spec produced by the assistant director.",
+          "properties": {
+            "shot_id": {
+              "title": "Shot Id",
+              "type": "string"
+            },
+            "beat_id": {
+              "title": "Beat Id",
+              "type": "string"
+            },
+            "duration_seconds": {
+              "title": "Duration Seconds",
+              "type": "number"
+            },
+            "description": {
+              "title": "Description",
+              "type": "string"
+            },
+            "involved_asset_ids": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Involved Asset Ids",
+              "type": "array"
+            },
+            "camera": {
+              "$ref": "#/$defs/CameraSpec"
+            },
+            "first_frame_ref": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/FrameRef"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "last_frame_ref": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/FrameRef"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "style_pack_id": {
+              "title": "Style Pack Id",
+              "type": "string"
+            },
+            "risk_level": {
+              "enum": [
+                "low",
+                "medium",
+                "high"
+              ],
+              "title": "Risk Level",
+              "type": "string"
+            },
+            "notes": {
+              "title": "Notes",
+              "type": "string"
+            }
+          },
+          "required": [
+            "shot_id",
+            "beat_id",
+            "duration_seconds",
+            "description",
+            "involved_asset_ids",
+            "camera",
+            "style_pack_id",
+            "risk_level",
+            "notes"
+          ],
+          "title": "Shot",
+          "type": "object"
+        },
+        "ShotRenderRequest": {
+          "additionalProperties": false,
+          "description": "Final per-shot request compiled for a downstream video model.",
+          "properties": {
+            "shot_id": {
+              "title": "Shot Id",
+              "type": "string"
+            },
+            "target_model": {
+              "title": "Target Model",
+              "type": "string"
+            },
+            "positive_text": {
+              "title": "Positive Text",
+              "type": "string"
+            },
+            "negative_text": {
+              "title": "Negative Text",
+              "type": "string"
+            },
+            "ref_images": {
+              "items": {
+                "$ref": "#/$defs/ImageRefSlot"
+              },
+              "title": "Ref Images",
+              "type": "array"
+            },
+            "first_frame_ref_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "First Frame Ref Path"
+            },
+            "last_frame_ref_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Last Frame Ref Path"
+            },
+            "camera": {
+              "$ref": "#/$defs/CameraSpec"
+            },
+            "duration_seconds": {
+              "title": "Duration Seconds",
+              "type": "number"
+            },
+            "aspect_ratio": {
+              "title": "Aspect Ratio",
+              "type": "string"
+            },
+            "style_pack_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Style Pack Id"
+            }
+          },
+          "required": [
+            "shot_id",
+            "target_model",
+            "positive_text",
+            "negative_text",
+            "ref_images",
+            "camera",
+            "duration_seconds",
+            "aspect_ratio"
+          ],
+          "title": "ShotRenderRequest",
+          "type": "object"
+        },
+        "StoryBeat": {
+          "additionalProperties": false,
+          "description": "Narrative beat used for storyboarding and beat-aware segmentation.",
+          "properties": {
+            "beat_id": {
+              "title": "Beat Id",
+              "type": "string"
+            },
+            "scene_id": {
+              "title": "Scene Id",
+              "type": "string"
+            },
+            "order": {
+              "minimum": 1,
+              "title": "Order",
+              "type": "integer"
+            },
+            "label": {
+              "title": "Label",
+              "type": "string"
+            },
+            "purpose": {
+              "title": "Purpose",
+              "type": "string"
+            },
+            "summary": {
+              "title": "Summary",
+              "type": "string"
+            },
+            "duration_seconds": {
+              "exclusiveMinimum": 0,
+              "title": "Duration Seconds",
+              "type": "number"
+            }
+          },
+          "required": [
+            "beat_id",
+            "scene_id",
+            "order",
+            "label",
+            "purpose",
+            "summary",
+            "duration_seconds"
+          ],
+          "title": "StoryBeat",
+          "type": "object"
+        },
+        "StoryPackage": {
+          "additionalProperties": false,
+          "description": "Structured screenwriter output.",
+          "properties": {
+            "title": {
+              "title": "Title",
+              "type": "string"
+            },
+            "logline": {
+              "title": "Logline",
+              "type": "string"
+            },
+            "synopsis": {
+              "title": "Synopsis",
+              "type": "string"
+            },
+            "adaptation_goal": {
+              "title": "Adaptation Goal",
+              "type": "string"
+            },
+            "format": {
+              "title": "Format",
+              "type": "string"
+            },
+            "emotional_rhythm": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Emotional Rhythm",
+              "type": "array"
+            },
+            "characters": {
+              "items": {
+                "$ref": "#/$defs/CharacterCard"
+              },
+              "title": "Characters",
+              "type": "array"
+            },
+            "scenes": {
+              "items": {
+                "$ref": "#/$defs/SceneSpec"
+              },
+              "title": "Scenes",
+              "type": "array"
+            },
+            "beats": {
+              "items": {
+                "$ref": "#/$defs/StoryBeat"
+              },
+              "title": "Beats",
+              "type": "array"
+            },
+            "estimated_total_shots": {
+              "minimum": 1,
+              "title": "Estimated Total Shots",
+              "type": "integer"
+            },
+            "narration_style": {
+              "title": "Narration Style",
+              "type": "string"
+            },
+            "dialogue_constraints": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Dialogue Constraints",
+              "type": "array"
+            },
+            "visual_motifs": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Visual Motifs",
+              "type": "array"
+            },
+            "notes": {
+              "default": "",
+              "title": "Notes",
+              "type": "string"
+            }
+          },
+          "required": [
+            "title",
+            "logline",
+            "synopsis",
+            "adaptation_goal",
+            "format",
+            "estimated_total_shots",
+            "narration_style"
+          ],
+          "title": "StoryPackage",
+          "type": "object"
+        },
+        "StoryboardPackage": {
+          "additionalProperties": false,
+          "description": "Structured AD output with executable shots and test priorities.",
+          "properties": {
+            "total_duration_seconds": {
+              "exclusiveMinimum": 0,
+              "title": "Total Duration Seconds",
+              "type": "number"
+            },
+            "shots": {
+              "items": {
+                "$ref": "#/$defs/Shot"
+              },
+              "title": "Shots",
+              "type": "array"
+            },
+            "continuity_notes": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Continuity Notes",
+              "type": "array"
+            },
+            "first_test_shot_ids": {
+              "items": {
+                "type": "string"
+              },
+              "title": "First Test Shot Ids",
+              "type": "array"
+            }
+          },
+          "required": [
+            "total_duration_seconds"
+          ],
+          "title": "StoryboardPackage",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Producer-integrated packet ready to feed video-production jobs.",
+      "properties": {
+        "brief": {
+          "$ref": "#/$defs/ProjectBrief"
+        },
+        "story": {
+          "$ref": "#/$defs/StoryPackage"
+        },
+        "art_generation_plan": {
+          "$ref": "#/$defs/ArtGenerationPlan"
+        },
+        "storyboard": {
+          "$ref": "#/$defs/StoryboardPackage"
+        },
+        "ad_feedback": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AdFeedback"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "locked_constraints": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Locked Constraints",
+          "type": "array"
+        },
+        "render_requests": {
+          "items": {
+            "$ref": "#/$defs/ShotRenderRequest"
+          },
+          "title": "Render Requests",
+          "type": "array"
+        },
+        "segments": {
+          "items": {
+            "$ref": "#/$defs/Segment"
+          },
+          "title": "Segments",
+          "type": "array"
+        },
+        "todo_items": {
+          "items": {
+            "$ref": "#/$defs/ProductionTodoItem"
+          },
+          "title": "Todo Items",
+          "type": "array"
+        },
+        "summary": {
+          "default": "",
+          "title": "Summary",
+          "type": "string"
+        }
+      },
+      "required": [
+        "brief",
+        "story",
+        "art_generation_plan",
+        "storyboard"
+      ],
+      "title": "ProductionPacket",
+      "type": "object"
+    }
+  }
+}
