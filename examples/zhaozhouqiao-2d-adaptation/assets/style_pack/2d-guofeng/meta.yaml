@@ -1,0 +1,16 @@
+asset_id: 2d-guofeng
+asset_type: style_pack
+name: 2D 国风风格包
+aliases:
+  - 国风风格
+  - 手绘国风
+description: 2D Chinese folklore animation, blue-gray stone palette, ink-wash edges, golden celestial light, sturdy bridge geometry
+visual_hooks:
+  - 青灰石色
+  - 金色仙光
+  - 水墨边缘
+reference_image_paths: []
+status: approved
+created_by_phase: art_design
+created_by_agent: art_design
+notes: Zhaozhou example style pack
