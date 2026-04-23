@@ -14,6 +14,7 @@ Should contain:
 - emotional rhythm
 - roles and goals
 - draft narration or dialogue
+- promised hook and recognition requirement when relevant
 - notes for art
 - notes for assistant director
 
@@ -26,6 +27,7 @@ Should contain:
 - character anchor blocks
 - costume and prop system
 - environment and set notes
+- literal vs metaphorical reveal decision when the concept depends on a transformation or gag
 - prompt blocks when needed
 - continuity constraints
 
@@ -52,6 +54,7 @@ Should identify:
 - what art design must fix
 - execution risks
 - which shots to test first
+- whether the promised hook still reads clearly on first watch
 
 ## `schedule.md`
 
