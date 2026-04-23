@@ -1,73 +1,116 @@
 ---
 name: character-prompt-engine
-description: Turn character ideas, role bios, costume or makeup notes, props, story context, or reference images into copy-ready image prompts for consistent character design, key art, lineup sheets, outfit variants, portraits, and prompt-only visual iterations. Use when Codex needs to generate a prompt for a character look, model sheet, poster still, or design variant without extra explanation.
+description: 美术设计 Agent 的内部能力。用于把角色、场景、道具、style pack 或参考图需求，转成写入 `ImageJob.prompt` 的结构化 prompt block，服务 Slate 的 `ArtGenerationPlan.asset_jobs`。Use when Codex needs prompt blocks for character / location / prop / style-pack generation inside the art-design stage.
 ---
 
 # Character Prompt Engine
 
-## Overview
+## 定位
 
-Work like a character designer, costume or makeup designer, key art director, and prompt compiler.
-Default to prompt-only output. Do not expand into a character brief, production notes, or analysis unless the user explicitly asks.
+本 skill 默认由 `video-agent-orchestration` 在**美术设计阶段**调用。
 
-## Output Contract
+它的产出不是“给用户复制的一段 prompt”，而是要进入 `ArtGenerationPlan.asset_jobs[*].prompt`，供图片生产 Agent 消费。
 
-- Final replies should usually contain only the prompt text itself.
-- Do not add headings, numbering, `Prompt:`, `Negative Prompt:`, or code fences unless the user explicitly asks.
-- Default to `1` complete prompt block.
-- If the user asks for multiple versions, output multiple prompt paragraphs separated by blank lines, with no labels.
-- If the user asks for bilingual output, place the English prompt first and the Chinese version after a blank line.
-- Default final prompt language to English unless the user asks for another language.
+## 支持的 `asset_type`
+
+本 skill 负责：
+
+- `character`
+- `location`
+- `prop`
+- `style_pack`
+
+本 skill **不处理**：
+
+- `camera_pack`
+
+`camera_pack` 由副导演在镜头层指定，不由美术设计 skill 生成。
+
+## 输出契约
+
+默认输出的是可直接写入 `ImageJob.prompt` / `ImageJob.negative_prompt` 的 prompt block。
+
+要求：
+
+- 能说明要画什么
+- 能锁定身份 / 结构 / 材质 / 色板 / 道具
+- 能服务跨图一致性
+- 不能只剩“漂亮 / 高级 / 电影感”这类空词
 
 ## Routing
 
-Classify the request before writing:
+在写 prompt 之前，先判断属于哪类：
 
-- `base design`: create a first-pass prompt from a role idea, mood, or story setup
-- `variation`: keep identity stable while changing costume, lighting, background, era, or mood
-- `consistency pass`: lock facial structure, hairstyle, silhouette, palette, and signature prop across multiple prompts
-- `model mode`: adapt wording for Universal, SDXL, Flux, Midjourney, anime-style models, or image-to-video seed frames
+- `base design`
+  - 第一次给角色 / 场景 / 道具 / style pack 建锚点
+- `variation`
+  - 保持身份稳定，只换服装、灯光、时代、背景或情绪
+- `consistency pass`
+  - 把同一主体跨多张图的脸型、轮廓、服化道结构锁死
+- `model mode`
+  - 按目标图像模型或 image-to-video seed 调整语言密度
 
-If the input is sparse, make conservative defaults and keep moving.
-Do not invent key plot twists, relationships, or identity facts the user did not approve.
+如果输入稀薄，做保守默认，不要擅自发明未经批准的剧情信息。
 
 ## Prompt Priorities
 
-When building a prompt, prioritize the following in order:
+写 prompt 时，优先级固定：
 
-1. role, age range, body type, and emotional impression
-2. facial structure and expression tendency
-3. hairstyle structure and hair accessories
-4. silhouette and wardrobe architecture
-5. material logic and visible wear
-6. palette lock: `2-3` main colors plus `1` accent
-7. `1-2` signature props
-8. shot type, framing, lens feel, and camera height
-9. lighting setup and mood
-10. background discipline so the style does not drift
-11. consistency language for face, hair, expression style, and outfit structure when continuity matters
+1. 角色 / 场景 / 道具是什么
+2. 结构锚点是什么
+3. 材质逻辑是什么
+4. 主色 / 辅色 / accent 是什么
+5. 识别道具是什么
+6. 画面构图和镜头高度是什么
+7. 光线和 mood 是什么
+8. 背景纪律是什么
+9. 一致性语言是什么
 
-Favor visible structure and material over vague praise words.
+优先写**可见结构**，不要写抽象赞美词。
 
 ## Model Modes
 
-- `Universal / SDXL / Flux`: use clear natural language with comma-rich visual grouping.
-- `Midjourney`: tighten phrasing and raise keyword density; only append parameters if the user asks.
-- `2D / anime`: stress clean linework, cel shading, controlled shapes, and stylized readability.
-- `live-action / key art`: stress texture, lensing, light direction, and production realism.
-- `image-to-video seed`: stress stable facial structure, stable hairstyle, stable wardrobe architecture, and stable lighting logic.
+- `Universal / SDXL / Flux`
+  - 用自然语言 + 结构化视觉分组
+- `Midjourney`
+  - 关键词密度更高，但仍然先写结构锚点
+- `2D / anime`
+  - 强调清晰轮廓、可读剪影、受控形状、cel / hand-drawn 逻辑
+- `live-action / key art`
+  - 强调镜头、材质、摄影光线和真实 production feel
+- `image-to-video seed`
+  - 强调同一张脸、同一套发型、同一套服装架构、同一套 style logic
+
+## style_pack 的特殊写法
+
+`style_pack` 的 prompt 不是“画一张什么东西”，而是“定义整个项目的风格基准”。
+
+模板：
+
+- 媒介 / rendering logic
+- 主色关系
+- 线条 / 体块 / 材质逻辑
+- 光影纪律
+- 镜头总体气质
+- 必须避免的风格漂移
+
+style pack prompt 示例结构：
+
+```text
+2D hand-drawn Chinese folklore animation style pack, blue-gray stone palette with warm gold highlights, clear silhouette hierarchy, ink-wash edges with controlled cel shading, sturdy architectural geometry, restrained atmospheric perspective, mythic but grounded tone, avoid photoreal 3D, avoid glossy game textures, avoid cute chibi proportions
+```
 
 ## Guardrails
 
-- Do not add unauthorized story beats, relationships, or lore.
-- Do not reproduce the exact face of a living public figure.
-- Do not directly replicate copyrighted named character designs.
-- Prefer specific visual nouns over generic adjectives like `beautiful`, `cool`, or `premium`.
-- Unless the user wants otherwise, naturally suppress: extra people, text, watermark, logo, distorted face, asymmetrical eyes, malformed hands, broken anatomy, cluttered background, and style drift.
+- 不添加未经批准的剧情反转、关系和 lore
+- 不复刻在世公众人物的精确脸
+- 不直接照搬受版权保护的命名角色设计
+- 不用 `beautiful`、`cool`、`premium` 这类空词替代结构描述
+- 除非有明确要求，默认压制：多余人物、文字、水印、logo、坏手、坏脸、背景脏乱、风格漂移
 
 ## Iteration Rules
 
-When the user says things like:
+当上游说：
 
 - `保持脸不变，换成雨夜版本`
 - `只改服装，其他不变`
@@ -76,4 +119,4 @@ When the user says things like:
 - `改成 2D 风格`
 - `加一个更明确的道具识别点`
 
-Rewrite the prompt directly. Do not explain your edits unless the user asks for the reasoning.
+就直接重写 prompt，不解释修改过程，除非对方明确问原因。
