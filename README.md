@@ -1,12 +1,16 @@
 # Slate
 
+Version: `0.2.0`
+
+Open-source Codex skills and runtime scaffolding for screenplay development, character prompt design, and stateful video agent orchestration.
+
 ## 中文简介
 
 `Slate` 目前开源了三个可直接放进 Codex 的技能：
 
 - `screenplay-development`：把灵感、梗概和草稿打磨成更可拍、更可卖的剧本
 - `character-prompt-engine`：把角色设定、服化道、镜头与气质需求压缩成可直接出图的人设/定妆照提示词
-- `video-agent-orchestration`：把 brief、现成剧本或改编任务，按制片逻辑逐阶段推进，整理出可交给生产层的 `production packet`
+- `video-agent-orchestration`：把 brief、现成剧本或改编任务，组织成制片驱动的视频 agent 流程，并整理出可交给生产层的 `production packet`
 
 这三个 skill 里，主轴其实是 `video-agent-orchestration`。
 
@@ -15,9 +19,9 @@
 - `screenplay-development` 融进 `编剧 Agent`
 - `character-prompt-engine` 融进 `美术设计 Agent`
 
-所以如果你想理解 `Slate` 的整体价值，最好的方式不是把它看成 3 个分散技能，而是把它看成 1 套由制片逻辑驱动的视频前期工作流规范。
+所以如果你想理解 `Slate` 的整体价值，最好的方式不是把它看成 3 个分散技能，而是看成 1 套由制片驱动的视频前期 agent 群。
 
-## 把 Slate 看成一套视频前期工作流规范
+## 把 Slate 看成一个视频 Agent 群
 
 原型说明文档见 [docs/agent-system-prototype.md](docs/agent-system-prototype.md)。
 
@@ -35,8 +39,6 @@ flowchart TD
     I --> B
 ```
 
-> **当前范围说明**：Slate 是一套提示词规范（Codex skill），每个阶段由用户手动调用对应 skill 推进。生产层（生产 Agent → 镜头产出）尚未实现自动对接，`production packet` 是当前流程的交付终点。
-
 ### 角色分工
 
 | 角色 | 主要工作 | 不负责 | 关键输出 | 内嵌能力 |
@@ -49,9 +51,9 @@ flowchart TD
 
 ### `video-agent-orchestration` 在里面做什么
 
-它是一套提示词规范，定义了角色分工、阶段顺序、交接文件和阶段门，让用户在 Codex 中手动按顺序调用各 skill 时，每一步都有明确的输入要求和输出标准。
+它不是“替你写一份文档”的 skill，而是整个流程的调度器。
 
-它主要约定 5 件事：
+它主要负责 5 件事：
 
 1. 定义入口：这是 `brief`、`现成剧本`、`改编任务` 还是 `救火重组`
 2. 定义顺序：先编剧，再美术，再副导演，再回到制片整合
@@ -59,7 +61,39 @@ flowchart TD
 4. 定义阶段门：生产包没完整之前，`生产 Agent` 不开工
 5. 定义最终交付：把零散剧本、美术、分镜资料收束成 `production packet`
 
-换句话说，它解决的不是"某一步生成质量不够高"，而是"项目明明有很多材料，却一直进不了生产"。
+换句话说，它解决的不是“某一步生成质量不够高”，而是“项目明明有很多材料，却一直进不了生产”。
+
+## 第一层升级：从 Skill 到真 Agent
+
+如果只靠 `Use $screenplay-development`、`Use $character-prompt-engine`、`Use $video-agent-orchestration` 手动切换，这一套本质上还是 prompt 链。
+
+要把它升级成真的 agent 系统，至少还要补三层：
+
+1. `编排框架`：把角色流程变成有状态图，而不是人工切换
+2. `结构化产出`：把 `story/art/storyboard/packet` 变成机器可读对象
+3. `状态机 + 回退`：把副导演打回编剧、美术的逻辑写成显式路由和终止条件
+
+这一层的详细说明在 [docs/agent-runtime-architecture.md](docs/agent-runtime-architecture.md)。
+
+仓库里已经补了第一版代码骨架：
+
+- `runtime/video_agents/schemas.py`
+- `runtime/video_agents/state.py`
+- `runtime/video_agents/services.py`
+- `runtime/video_agents/graph.py`
+- `runtime/video_agents/export_schemas.py`
+
+当前选择是：
+
+- 顶层编排用 `LangGraph`
+- 结构化输出用 `Pydantic + JSON Schema`
+- 单节点模型执行可以接 `OpenAI Structured Outputs`，或继续往里接 `OpenAI Agents SDK`
+
+这样改完之后，三者关系会更清楚：
+
+- `video-agent-orchestration`：顶层流程规范
+- `screenplay-development`：编剧 Agent 的内部能力
+- `character-prompt-engine`：美术设计 Agent 的内部能力
 
 ## 三个 Skill 各自怎么用
 
@@ -156,6 +190,17 @@ cp -R Slate/skills/video-agent-orchestration ./skills/
 ```text
 docs/
   agent-system-prototype.md
+  agent-runtime-architecture.md
+runtime/
+  README.md
+  pyproject.toml
+  video_agents/
+    __init__.py
+    schemas.py
+    state.py
+    services.py
+    graph.py
+    export_schemas.py
 skills/
   character-prompt-engine/
     SKILL.md
@@ -190,7 +235,7 @@ examples/
 
 完整案例见 [examples/zhaozhouqiao-2d-adaptation/README.md](examples/zhaozhouqiao-2d-adaptation/README.md)。
 
-这个案例不是为了证明"模型能不能一键出片"，而是为了验证这套 agent 群能不能把一个已有剧本，稳定推进到 `production packet`。
+这个案例不是为了证明“模型能不能一键出片”，而是为了验证这套 agent 群能不能把一个已有剧本，稳定推进到 `production packet`。
 
 案例输入：
 
