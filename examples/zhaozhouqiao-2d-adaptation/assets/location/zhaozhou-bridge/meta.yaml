@@ -1,0 +1,17 @@
+asset_id: zhaozhou-bridge
+asset_type: location
+name: 赵州桥
+aliases:
+  - 石桥
+  - 桥
+description: 青灰石拱桥，桥腹稳定，栏板清晰，是全片主场景
+visual_hooks:
+  - 青灰石拱
+  - 长虹卧波
+  - 桥腹比例稳定
+reference_image_paths:
+  - location/zhaozhou-bridge/bridge-001.png
+status: approved
+created_by_phase: art_design
+created_by_agent: image_production
+notes: Zhaozhou example asset
