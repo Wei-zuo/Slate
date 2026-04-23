@@ -9,6 +9,11 @@ description: 制片驱动的视频 agent 编排技能。用于把 brief、现成
 
 This skill is for running a producer-led video pipeline, not for writing one isolated artifact in a vacuum.
 
+If you need a programmatic runtime instead of a manual Codex flow, pair this skill with:
+
+- `docs/agent-runtime-architecture.md`
+- `runtime/video_agents/`
+
 Treat the work as a five-role chain:
 
 1. producer
